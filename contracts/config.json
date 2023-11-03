@@ -1,4 +1,13 @@
 {
   "version": 1,
-  "deployAliases": {}
+  "deployAliases": {
+    "berkeley": {
+      "url": "https://proxy.berkeley.minaexplorer.com/graphql",
+      "keyPath": "keys/berkeley.json",
+      "feepayerKeyPath": "/Users/lin/.cache/zkapp-cli/keys/mina-local-wallet.json",
+      "feepayerAlias": "mina-local-wallet",
+      "fee": "0.1",
+      "smartContract": "Add"
+    }
+  }
 }

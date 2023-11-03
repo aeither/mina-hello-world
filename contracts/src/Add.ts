@@ -22,4 +22,9 @@ export class Add extends SmartContract {
     const newState = currentState.add(2);
     this.num.set(newState);
   }
+
+  @method multiply() {
+    const newState = this.num.getAndAssertEquals().mul(Field(2));
+    this.num.set(newState);
+  }
 }

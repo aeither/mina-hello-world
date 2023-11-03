@@ -21,6 +21,16 @@ npm run testw # watch mode
 npm run coverage
 ```
 
+## Deploy and interact
+
+```sh
+zk deploy berkeley
+```
+
+```sh
+node build/src/interact.js berkeley
+```
+
 ## License
 
 [Apache-2.0](LICENSE)
