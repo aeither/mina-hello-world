@@ -21,6 +21,12 @@ npm run testw # watch mode
 npm run coverage
 ```
 
+## Prepare for deploy
+
+```sh
+zk config
+```
+
 ## Deploy and interact
 
 ```sh
