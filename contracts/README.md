@@ -21,6 +21,13 @@ npm run testw # watch mode
 npm run coverage
 ```
 
+
+## Start a new project
+
+```sh
+zk p Name
+```
+
 ## Prepare for deploy
 
 ```sh
@@ -36,6 +43,10 @@ zk deploy berkeley
 ```sh
 node build/src/interact.js berkeley
 ```
+
+--
+
+I can deploy only once. By default it is NOT updatable
 
 ## License
 

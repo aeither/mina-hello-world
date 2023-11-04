@@ -7,7 +7,7 @@
       "feepayerKeyPath": "/Users/lin/.cache/zkapp-cli/keys/mina-local-wallet.json",
       "feepayerAlias": "mina-local-wallet",
       "fee": "0.1",
-      "smartContract": "Add"
+      "smartContract": "Hello"
     }
   }
 }
