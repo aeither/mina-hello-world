@@ -27,6 +27,154 @@ module.exports = ((_global_process = __webpack_require__.g.process) == null ? vo
 
 /***/ }),
 
+/***/ 8122:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: function() { return /* binding */ GradientBG; }
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5893);
+/* harmony import */ var _styles_Home_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1110);
+/* harmony import */ var _styles_Home_module_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_styles_Home_module_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7294);
+// @ts-nocheck
+
+
+
+function GradientBG(param) {
+    let { children } = param;
+    const canvasRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+    const [context, setContext] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
+    const [pixels, setPixels] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
+    function Color(h, s, l, a) {
+        this.h = h;
+        this.s = s;
+        this.l = l;
+        this.a = a;
+        this.dir = Math.random() > 0.5 ? -1 : 1;
+        this.toString = function() {
+            return "hsla(" + this.h + ", " + this.s + "%, " + this.l + "%, " + this.a + ")";
+        };
+    }
+    function Pixel(x, y, w, h, color) {
+        this.x = {
+            c: x,
+            min: 0,
+            max: canvasRef.current.width,
+            dir: Math.random() > 0.5 ? -1 : 1
+        };
+        this.y = {
+            c: y,
+            min: 0,
+            max: canvasRef.current.height,
+            dir: Math.random() > 0.5 ? -1 : 1
+        };
+        this.w = {
+            c: w,
+            min: 2,
+            max: canvasRef.current.width,
+            dir: Math.random() > 0.5 ? -1 : 1
+        };
+        this.h = {
+            c: h,
+            min: 2,
+            max: canvasRef.current.height,
+            dir: Math.random() > 0.5 ? -1 : 1
+        };
+        this.color = color;
+        this.direction = Math.random() > 0.1 ? -1 : 1;
+        this.velocity = (Math.random() * 100 + 100) * 0.01 * this.direction;
+    }
+    function updatePixel(pixel) {
+        if (pixel.x.c <= pixel.x.min || pixel.x.c >= pixel.x.max) {
+            pixel.x.dir *= -1;
+        }
+        if (pixel.y.c <= pixel.y.min || pixel.y.c >= pixel.y.max) {
+            pixel.y.dir *= -1;
+        }
+        if (pixel.w.c <= pixel.w.min || pixel.w.c >= pixel.w.max) {
+            pixel.w.dir *= -1;
+        }
+        if (pixel.h.c <= pixel.h.min || pixel.h.c >= pixel.h.max) {
+            pixel.h.dir *= -1;
+        }
+        if (pixel.color.a <= 0 || pixel.color.a >= 0.75) {
+            pixel.color.dir *= -1;
+        }
+        pixel.x.c += 0.005 * pixel.x.dir;
+        pixel.y.c += 0.005 * pixel.y.dir;
+        pixel.w.c += 0.005 * pixel.w.dir;
+        pixel.h.c += 0.005 * pixel.h.dir;
+    }
+    function renderPixel(pixel) {
+        context.restore();
+        context.fillStyle = pixel.color.toString();
+        context.fillRect(pixel.x.c, pixel.y.c, pixel.w.c, pixel.h.c);
+    }
+    function paint() {
+        if (canvasRef.current) {
+            context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+            for(let i = 0; i < pixels.length; i++){
+                updatePixel(pixels[i]);
+                renderPixel(pixels[i]);
+            }
+        }
+    }
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        if (canvasRef.current) {
+            const canvas = canvasRef.current;
+            const ctx = canvas.getContext("2d");
+            setContext(ctx);
+            const currentPixels = [
+                new Pixel(1, 1, 3, 4, new Color(252, 70, 67, 0.8)),
+                new Pixel(0, 0, 1, 1, new Color(0, 0, 98, 1)),
+                new Pixel(0, 3, 2, 2, new Color(11, 100, 62, 0.8)),
+                new Pixel(4, 0, 4, 3, new Color(190, 94, 75, 0.8)),
+                new Pixel(3, 1, 1, 2, new Color(324, 98, 50, 0.1))
+            ];
+            setPixels(currentPixels);
+        }
+    }, []);
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        let animationFrameId;
+        if (context) {
+            const animate = ()=>{
+                paint();
+                animationFrameId = window.requestAnimationFrame(animate);
+            };
+            animate();
+        }
+        return ()=>{
+            window.cancelAnimationFrame(animationFrameId);
+        };
+    }, [
+        paint,
+        pixels,
+        context
+    ]);
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: [
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                className: (_styles_Home_module_css__WEBPACK_IMPORTED_MODULE_2___default().background),
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("canvas", {
+                    className: (_styles_Home_module_css__WEBPACK_IMPORTED_MODULE_2___default().backgroundGradients),
+                    width: "6",
+                    height: "6",
+                    ref: canvasRef
+                })
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                className: (_styles_Home_module_css__WEBPACK_IMPORTED_MODULE_2___default().container),
+                children: children
+            })
+        ]
+    });
+}
+
+
+/***/ }),
+
 /***/ 2052:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -42,7 +190,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reactCOIServiceWorker__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_reactCOIServiceWorker__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _zkappWorkerClient__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9619);
 /* harmony import */ var o1js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9466);
-/* harmony import */ var _components_GradientBG_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(1941);
+/* harmony import */ var _components_GradientBG_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(8122);
 /* harmony import */ var _styles_Home_module_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(1110);
 /* harmony import */ var _styles_Home_module_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_styles_Home_module_css__WEBPACK_IMPORTED_MODULE_6__);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_zkappWorkerClient__WEBPACK_IMPORTED_MODULE_3__, o1js__WEBPACK_IMPORTED_MODULE_4__]);
@@ -423,153 +571,6 @@ module.exports = {"main":"Home_main__2uIek","background":"Home_background__CTycG
 
 var __dirname = "/";
 (function(){var e={229:function(e){var t=e.exports={};var r;var n;function defaultSetTimout(){throw new Error("setTimeout has not been defined")}function defaultClearTimeout(){throw new Error("clearTimeout has not been defined")}(function(){try{if(typeof setTimeout==="function"){r=setTimeout}else{r=defaultSetTimout}}catch(e){r=defaultSetTimout}try{if(typeof clearTimeout==="function"){n=clearTimeout}else{n=defaultClearTimeout}}catch(e){n=defaultClearTimeout}})();function runTimeout(e){if(r===setTimeout){return setTimeout(e,0)}if((r===defaultSetTimout||!r)&&setTimeout){r=setTimeout;return setTimeout(e,0)}try{return r(e,0)}catch(t){try{return r.call(null,e,0)}catch(t){return r.call(this,e,0)}}}function runClearTimeout(e){if(n===clearTimeout){return clearTimeout(e)}if((n===defaultClearTimeout||!n)&&clearTimeout){n=clearTimeout;return clearTimeout(e)}try{return n(e)}catch(t){try{return n.call(null,e)}catch(t){return n.call(this,e)}}}var i=[];var o=false;var u;var a=-1;function cleanUpNextTick(){if(!o||!u){return}o=false;if(u.length){i=u.concat(i)}else{a=-1}if(i.length){drainQueue()}}function drainQueue(){if(o){return}var e=runTimeout(cleanUpNextTick);o=true;var t=i.length;while(t){u=i;i=[];while(++a<t){if(u){u[a].run()}}a=-1;t=i.length}u=null;o=false;runClearTimeout(e)}t.nextTick=function(e){var t=new Array(arguments.length-1);if(arguments.length>1){for(var r=1;r<arguments.length;r++){t[r-1]=arguments[r]}}i.push(new Item(e,t));if(i.length===1&&!o){runTimeout(drainQueue)}};function Item(e,t){this.fun=e;this.array=t}Item.prototype.run=function(){this.fun.apply(null,this.array)};t.title="browser";t.browser=true;t.env={};t.argv=[];t.version="";t.versions={};function noop(){}t.on=noop;t.addListener=noop;t.once=noop;t.off=noop;t.removeListener=noop;t.removeAllListeners=noop;t.emit=noop;t.prependListener=noop;t.prependOnceListener=noop;t.listeners=function(e){return[]};t.binding=function(e){throw new Error("process.binding is not supported")};t.cwd=function(){return"/"};t.chdir=function(e){throw new Error("process.chdir is not supported")};t.umask=function(){return 0}}};var t={};function __nccwpck_require__(r){var n=t[r];if(n!==undefined){return n.exports}var i=t[r]={exports:{}};var o=true;try{e[r](i,i.exports,__nccwpck_require__);o=false}finally{if(o)delete t[r]}return i.exports}if(typeof __nccwpck_require__!=="undefined")__nccwpck_require__.ab=__dirname+"/";var r=__nccwpck_require__(229);module.exports=r})();
-
-/***/ }),
-
-/***/ 1941:
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Z: function() { return /* binding */ GradientBG; }
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5893);
-/* harmony import */ var _styles_Home_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1110);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7294);
-// @ts-nocheck
-
-
-
-function GradientBG(param) {
-    let { children } = param;
-    const canvasRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
-    const [context, setContext] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
-    const [pixels, setPixels] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
-    function Color(h, s, l, a) {
-        this.h = h;
-        this.s = s;
-        this.l = l;
-        this.a = a;
-        this.dir = Math.random() > 0.5 ? -1 : 1;
-        this.toString = function() {
-            return "hsla(" + this.h + ", " + this.s + "%, " + this.l + "%, " + this.a + ")";
-        };
-    }
-    function Pixel(x, y, w, h, color) {
-        this.x = {
-            c: x,
-            min: 0,
-            max: canvasRef.current.width,
-            dir: Math.random() > 0.5 ? -1 : 1
-        };
-        this.y = {
-            c: y,
-            min: 0,
-            max: canvasRef.current.height,
-            dir: Math.random() > 0.5 ? -1 : 1
-        };
-        this.w = {
-            c: w,
-            min: 2,
-            max: canvasRef.current.width,
-            dir: Math.random() > 0.5 ? -1 : 1
-        };
-        this.h = {
-            c: h,
-            min: 2,
-            max: canvasRef.current.height,
-            dir: Math.random() > 0.5 ? -1 : 1
-        };
-        this.color = color;
-        this.direction = Math.random() > 0.1 ? -1 : 1;
-        this.velocity = (Math.random() * 100 + 100) * 0.01 * this.direction;
-    }
-    function updatePixel(pixel) {
-        if (pixel.x.c <= pixel.x.min || pixel.x.c >= pixel.x.max) {
-            pixel.x.dir *= -1;
-        }
-        if (pixel.y.c <= pixel.y.min || pixel.y.c >= pixel.y.max) {
-            pixel.y.dir *= -1;
-        }
-        if (pixel.w.c <= pixel.w.min || pixel.w.c >= pixel.w.max) {
-            pixel.w.dir *= -1;
-        }
-        if (pixel.h.c <= pixel.h.min || pixel.h.c >= pixel.h.max) {
-            pixel.h.dir *= -1;
-        }
-        if (pixel.color.a <= 0 || pixel.color.a >= 0.75) {
-            pixel.color.dir *= -1;
-        }
-        pixel.x.c += 0.005 * pixel.x.dir;
-        pixel.y.c += 0.005 * pixel.y.dir;
-        pixel.w.c += 0.005 * pixel.w.dir;
-        pixel.h.c += 0.005 * pixel.h.dir;
-    }
-    function renderPixel(pixel) {
-        context.restore();
-        context.fillStyle = pixel.color.toString();
-        context.fillRect(pixel.x.c, pixel.y.c, pixel.w.c, pixel.h.c);
-    }
-    function paint() {
-        if (canvasRef.current) {
-            context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-            for(let i = 0; i < pixels.length; i++){
-                updatePixel(pixels[i]);
-                renderPixel(pixels[i]);
-            }
-        }
-    }
-    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
-        if (canvasRef.current) {
-            const canvas = canvasRef.current;
-            const ctx = canvas.getContext("2d");
-            setContext(ctx);
-            const currentPixels = [
-                new Pixel(1, 1, 3, 4, new Color(252, 70, 67, 0.8)),
-                new Pixel(0, 0, 1, 1, new Color(0, 0, 98, 1)),
-                new Pixel(0, 3, 2, 2, new Color(11, 100, 62, 0.8)),
-                new Pixel(4, 0, 4, 3, new Color(190, 94, 75, 0.8)),
-                new Pixel(3, 1, 1, 2, new Color(324, 98, 50, 0.1))
-            ];
-            setPixels(currentPixels);
-        }
-    }, []);
-    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
-        let animationFrameId;
-        if (context) {
-            const animate = ()=>{
-                paint();
-                animationFrameId = window.requestAnimationFrame(animate);
-            };
-            animate();
-        }
-        return ()=>{
-            window.cancelAnimationFrame(animationFrameId);
-        };
-    }, [
-        paint,
-        pixels,
-        context
-    ]);
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-        children: [
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-                className: _styles_Home_module_css__WEBPACK_IMPORTED_MODULE_2__.background,
-                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("canvas", {
-                    className: _styles_Home_module_css__WEBPACK_IMPORTED_MODULE_2__.backgroundGradients,
-                    width: "6",
-                    height: "6",
-                    ref: canvasRef
-                })
-            }),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-                className: _styles_Home_module_css__WEBPACK_IMPORTED_MODULE_2__.container,
-                children: children
-            })
-        ]
-    });
-}
-
 
 /***/ })
 

@@ -47,7 +47,7 @@ Object.defineProperty(exports, "addBasePath", ({
 }));
 const _addpathprefix = __webpack_require__(6063);
 const _normalizetrailingslash = __webpack_require__(2866);
-const basePath = "/04-zkapp-browser-ui" || 0;
+const basePath = "/mina-hello-world" || 0;
 function addBasePath(path, required) {
     return (0, _normalizetrailingslash.normalizePathTrailingSlash)( false ? 0 : (0, _addpathprefix.addPathPrefix)(path, basePath));
 }
@@ -240,7 +240,7 @@ Object.defineProperty(exports, "hasBasePath", ({
     }
 }));
 const _pathhasprefix = __webpack_require__(387);
-const basePath = "/04-zkapp-browser-ui" || 0;
+const basePath = "/mina-hello-world" || 0;
 function hasBasePath(path) {
     return (0, _pathhasprefix.pathHasPrefix)(path, basePath);
 }
@@ -612,7 +612,7 @@ function AppContainer(param) {
     }, /*#__PURE__*/ _react.default.createElement(_headmanagercontextsharedruntime.HeadManagerContext.Provider, {
         value: headManager
     }, /*#__PURE__*/ _react.default.createElement(_imageconfigcontextsharedruntime.ImageConfigContext.Provider, {
-        value: {"deviceSizes":[640,750,828,1080,1200,1920,2048,3840],"imageSizes":[16,32,48,64,96,128,256,384],"path":"/04-zkapp-browser-ui/_next/image","loader":"default","dangerouslyAllowSVG":false,"unoptimized":true}
+        value: {"deviceSizes":[640,750,828,1080,1200,1920,2048,3840],"imageSizes":[16,32,48,64,96,128,256,384],"path":"/mina-hello-world/_next/image","loader":"default","dangerouslyAllowSVG":false,"unoptimized":true}
     }, children))))))));
 }
 const wrapApp = (App)=>(wrappedAppProps)=>{
@@ -1337,7 +1337,7 @@ Object.defineProperty(exports, "removeBasePath", ({
     }
 }));
 const _hasbasepath = __webpack_require__(6864);
-const basePath = "/04-zkapp-browser-ui" || 0;
+const basePath = "/mina-hello-world" || 0;
 function removeBasePath(path) {
     if (false) {}
     // Can't trim the basePath if it has zero length!
@@ -5614,7 +5614,7 @@ class Router {
         // if auto prerendered and dynamic route wait to update asPath
         // until after mount to prevent hydration mismatch
         const autoExportDynamic = (0, _isdynamic.isDynamicRoute)(pathname) && self.__NEXT_DATA__.autoExport;
-        this.basePath = "/04-zkapp-browser-ui" || 0;
+        this.basePath = "/mina-hello-world" || 0;
         this.sub = subscription;
         this.clc = null;
         this._wrapApp = wrapApp;
