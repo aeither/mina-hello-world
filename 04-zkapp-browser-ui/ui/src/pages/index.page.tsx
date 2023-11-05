@@ -191,7 +191,7 @@ export default function Home() {
     const auroLink = 'https://www.aurowallet.com/';
     const auroLinkElem = (
       <a href={auroLink} target="_blank" rel="noreferrer">
-        Install Auro wallet here
+        Install Auro wallet here.
       </a>
     );
     hasWallet = <div>Could not find a wallet. {auroLinkElem}</div>;
