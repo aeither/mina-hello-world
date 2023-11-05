@@ -168,7 +168,7 @@
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = function(chunkId) {
 /******/ 			// return url for filenames based on template
-/******/ 			return "static/chunks/" + chunkId + "." + "c99e50e0d8c88734" + ".js";
+/******/ 			return "static/chunks/" + chunkId + "." + "5b4ef07ca940aaa1" + ".js";
 /******/ 		};
 /******/ 	}();
 /******/ 	
@@ -224,7 +224,7 @@
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	!function() {
-/******/ 		__webpack_require__.p = "/04-zkapp-browser-ui/_next/";
+/******/ 		__webpack_require__.p = "/mina-hello-world/_next/";
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */

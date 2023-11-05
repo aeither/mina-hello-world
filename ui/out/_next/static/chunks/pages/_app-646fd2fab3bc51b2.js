@@ -47,7 +47,7 @@ function App(param) {
 function loadCOIServiceWorker() {
     if ( true && window.location.hostname != "localhost") {
         const coi = window.document.createElement("script");
-        coi.setAttribute("src", "/04-zkapp-browser-ui/coi-serviceworker.min.js"); // update if your repo name changes for npm run deploy to work successfully
+        coi.setAttribute("src", "/mina-hello-world/coi-serviceworker.min.js"); // update if your repo name changes for npm run deploy to work successfully
         window.document.head.appendChild(coi);
     }
 }
